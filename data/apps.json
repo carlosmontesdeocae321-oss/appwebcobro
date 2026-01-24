@@ -3,19 +3,17 @@
     {
       "id": "urgentitourdesa",
       "name": "URGENTITO URDESA",
-<<<<<<< HEAD
       "whatsapp": "https://wa.me/593962542536",
-=======
-<<<<<<< HEAD
-      "whatsapp": "https://wa.me/593998926281",
-=======
-      "whatsapp": "+593998926281",
->>>>>>> ef79343 (Use owner WhatsApp in public card; set client WhatsApp in apps.json)
->>>>>>> 2fe98cf (Use owner WhatsApp in public card; set client WhatsApp in apps.json)
       "enabled": false,
       "message": "Servicio temporal activado (prueba). Contacta por WhatsApp para más info.",
       "startDate": "2026-01-21",
       "expirationDate": "2026-02-23"
+      ,
+      "price": {
+        "amount": 10,
+        "currency": "USD",
+        "interval": "monthly"
+      }
     }
   ]
 }

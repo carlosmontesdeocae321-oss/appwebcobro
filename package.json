@@ -1,0 +1,11 @@
+{
+  "name": "appwebcobro",
+  "version": "1.0.0",
+  "description": "Utilities for appwebcobro repo",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=16"
+  }
+}

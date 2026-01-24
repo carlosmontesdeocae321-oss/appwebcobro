@@ -1,0 +1,10 @@
+name: Notify expired apps (SMTP disabled)
+
+on: [workflow_dispatch]
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: No-op
+        run: echo "SMTP email notifier disabled in this repo"

@@ -8,42 +8,6 @@
       "message": "Servicio temporal activado (prueba). Contacta por WhatsApp para más info.",
       "startDate": "2026-01-21",
       "expirationDate": "2026-02-23"
-    },
-    {
-      "id": "restaurant-x",
-      "name": "Restaurant X",
-      "whatsapp": "https://wa.me/34123456789",
-      "enabled": false,
-      "message": "Aviso: servicio temporal desactivado.",
-      "startDate": "2025-12-01",
-      "expirationDate": "2026-03-01"
-    },
-    {
-      "id": "tienda-online",
-      "name": "Tienda Online",
-      "whatsapp": "https://wa.me/34987654321",
-      "enabled": true,
-      "message": "Pago pendiente — contacta para resolver.",
-      "startDate": "2026-01-01",
-      "expirationDate": "2026-02-15"
-    },
-    {
-      "id": "clinica-abc",
-      "name": "Clínica ABC",
-      "whatsapp": "https://wa.me/34611223344",
-      "enabled": false,
-      "message": "Recordatorio de pago enviado.",
-      "startDate": "2025-11-15",
-      "expirationDate": "2026-01-31"
-    },
-    {
-      "id": "curso-online",
-      "name": "Curso Online",
-      "whatsapp": "https://wa.me/34111222333",
-      "enabled": true,
-      "message": "Acceso restringido por falta de pago.",
-      "startDate": "2026-01-10",
-      "expirationDate": "2026-04-01"
     }
   ]
 }

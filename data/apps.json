@@ -4,7 +4,7 @@
       "id": "urgentitourdesa",
       "name": "URGENTITO URDESA",
       "whatsapp": "https://wa.me/593998926281",
-      "enabled": false,
+      "enabled": true,
       "message": "Servicio temporal activado (prueba). Contacta por WhatsApp para más info.",
       "startDate": "2026-01-21",
       "expirationDate": "2026-01-24"

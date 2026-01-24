@@ -1,0 +1,292 @@
+:root{
+  --bg:#0f1117;
+  --card:#171a22;
+  --card-soft:#1d212b;
+  --accent:#00ffd5;
+  --accent2:#00b3ff;
+  --danger:#ff4d6d;
+  --text:#e6e9ef;
+  --muted:#9aa3b2;
+  --border:#262b36;
+}
+
+*{box-sizing:border-box;font-family:Inter,system-ui,Arial,sans-serif}
+
+body{
+  margin:0;
+  background:radial-gradient(circle at 20% 20%, #151925, #0f1117 60%);
+  color:var(--text);
+}
+
+.wrap{
+  max-width:1100px;
+  margin:40px auto;
+  padding:24px;
+}
+
+h1{
+  margin:0 0 6px;
+  font-size:24px;
+  letter-spacing:.5px;
+}
+
+.lead{
+  margin:0 0 28px;
+  color:var(--muted);
+}
+
+/* SECCIONES */
+.card-section{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px;
+  margin-bottom:26px;
+  box-shadow:0 0 0 1px rgba(0,255,213,0.03), 0 10px 30px rgba(0,0,0,.4);
+}
+
+.card-section h2{
+  margin-top:0;
+  font-size:18px;
+  letter-spacing:.4px;
+}
+
+.section-desc{
+  margin-top:-6px;
+  margin-bottom:16px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* LISTA DE APPS */
+#apps-list{
+  display:grid;
+  gap:14px;
+}
+
+/* EDITOR POR APP */
+.controls-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:12px;
+  margin-bottom:18px;
+  flex-wrap:wrap;
+}
+
+.inline-buttons{
+  display:flex;
+  gap:8px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  margin-bottom:16px;
+}
+
+label{
+  display:flex;
+  flex-direction:column;
+  font-size:13px;
+  color:var(--muted);
+  gap:6px;
+}
+
+input, select, textarea{
+  background:var(--card-soft);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px;
+  color:var(--text);
+  font-size:14px;
+}
+
+input:focus, select:focus, textarea:focus{
+  outline:none;
+  border-color:var(--accent2);
+  box-shadow:0 0 0 2px rgba(0,179,255,.15);
+}
+
+.checkbox-label{
+  flex-direction:row;
+  align-items:center;
+  gap:10px;
+  margin-top:26px;
+  color:var(--text);
+}
+
+/* BOTONES */
+.btn{
+  background:var(--card-soft);
+  border:1px solid var(--border);
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  color:var(--text);
+  transition:.2s ease;
+}
+
+.btn:hover{
+  border-color:var(--accent2);
+  transform:translateY(-1px);
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#001018;
+  border:none;
+  font-weight:600;
+}
+
+.btn.danger{
+  border-color:var(--danger);
+  color:var(--danger);
+}
+
+.controls{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+  flex-wrap:wrap;
+}
+
+/* REGISTRY */
+.registry-section textarea{
+  width:100%;
+  height:340px;
+  margin-top:10px;
+  font-family:Consolas,monospace;
+  font-size:13px;
+  line-height:1.5;
+  resize:vertical;
+}
+/* ===== CARDS DE APPS REGISTRADAS ===== */
+/* ===== GRID DE 3 COLUMNAS ===== */
+#apps-list{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
+}
+
+/* Responsive */
+@media (max-width: 1100px){
+  #apps-list{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  #apps-list{ grid-template-columns: 1fr; }
+}
+
+
+/* ===== CARD CUADRADA ===== */
+.app{
+  background: linear-gradient(145deg, #1b1f2a, #161922);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height: 220px; /* hace que se sientan cuadradas */
+  transition: all .25s ease;
+  position: relative;
+  overflow:hidden;
+}
+
+.app:hover{
+  transform: translateY(-4px);
+  border-color: var(--accent2);
+  box-shadow: 0 12px 28px rgba(0,0,0,.45);
+}
+
+/* TOP INFO */
+.app-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.name{
+  font-size:16px;
+  font-weight:600;
+  line-height:1.2;
+}
+
+.app-id{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+/* BADGE ESTADO */
+.status-badge{
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.status-active{
+  background:rgba(0,255,213,.12);
+  color:var(--accent);
+  border:1px solid rgba(0,255,213,.25);
+}
+
+.status-blocked{
+  background:rgba(255,77,109,.12);
+  color:var(--danger);
+  border:1px solid rgba(255,77,109,.35);
+}
+
+/* FECHAS */
+.dates{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-top:12px;
+}
+
+.date-box{
+  background:var(--card-soft);
+  border:1px solid var(--border);
+  padding:8px 10px;
+  border-radius:8px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* BOTONES ABAJO */
+.actions{
+  display:flex;
+  gap:8px;
+  margin-top:14px;
+}
+
+.actions .btn{
+  flex:1;
+  justify-content:center;
+  text-align:center;
+}
+
+/* ESTADO VENCIDO */
+.app.expired{
+  border-color:var(--danger);
+  box-shadow:0 0 0 1px rgba(255,77,109,.25);
+}
+
+.app.expired .name{
+  color:var(--danger);
+}
+
+/* GitHub push modal styles */
+.gh-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:1100000}
+.gh-modal{background:#0f1117;color:var(--text);padding:16px;border-radius:10px;max-width:560px;width:94%;box-shadow:0 12px 40px rgba(0,0,0,0.6);border:1px solid var(--border)}
+.gh-modal h3{margin:0 0 8px}
+.gh-modal label{display:block;margin:8px 0 4px;color:var(--muted);font-size:13px}
+.gh-modal input[type="text"],.gh-modal input[type="password"]{width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;background:var(--card-soft);color:var(--text)}
+.gh-modal .row{display:flex;gap:8px}
+.gh-modal .actions{margin-top:12px;display:flex;gap:8px;justify-content:flex-end}
+.gh-modal .note{font-size:12px;color:var(--muted);margin-top:8px}

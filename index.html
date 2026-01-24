@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard - AppWebCobro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <h1>Seguimiento de páginas</h1>
+    <p class="lead"></p>
+
+    <!-- APPS REGISTRADAS -->
+    <section id="apps-section" class="card-section">
+      <h2>Apps Registradas</h2>
+      <div id="apps-list">Cargando...</div>
+    </section>
+
+    <!-- EDITOR POR APP -->
+    <section class="app-editor card-section">
+      <h2>Editor por App</h2>
+      <p class="section-desc">Modifica los datos individuales de cada cliente o página.</p>
+
+      <div class="controls-row">
+        <label>Seleccionar app
+          <select id="edit-app-id"><option value="">-- seleccionar --</option></select>
+        </label>
+        <div class="inline-buttons">
+          <button id="add-app" class="btn">＋ Nueva</button>
+          <button id="remove-app" class="btn danger">🗑 Eliminar</button>
+        </div>
+      </div>
+
+      <div id="app-editor-fields" class="form-grid">
+        <label>Nombre
+          <input id="edit-name" type="text" placeholder="Nombre de la app">
+        </label>
+
+        <label>WhatsApp
+          <input id="edit-whatsapp" type="url" placeholder="https://wa.me/...">
+        </label>
+
+        <label>Mensaje de bloqueo
+          <input id="edit-message" type="text" placeholder="Mensaje a mostrar">
+        </label>
+
+        <label>Fecha de inicio
+          <input id="edit-startDate" type="date">
+        </label>
+
+        <label>Fecha de vencimiento
+          <input id="edit-expirationDate" type="date">
+        </label>
+
+        <label class="checkbox-label">
+          <input id="edit-enabled" type="checkbox">
+          Bloqueo activado
+        </label>
+      </div>
+
+      <div class="controls">
+        <button id="save-app" class="btn primary">💾 Guardar cambios</button>
+        <button id="cancel-edit" class="btn">Cancelar</button>
+      </div>
+    </section>
+
+    <!-- REGISTRY JSON -->
+    <section class="editor card-section registry-section">
+      <h2>Editar / Exportar Registry</h2>
+      <p class="section-desc">Este es el archivo global. Descárgalo y súbelo a tu repo para aplicar cambios.</p>
+
+      <textarea id="json-srv" spellcheck="false"></textarea>
+
+      <div class="controls">
+        <button id="download-json" class="btn primary">⬇ Descargar JSON</button>
+        <button id="copy-json" class="btn">📋 Copiar JSON</button>
+        <button id="push-json">Push a GitHub</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="dashboard.js" defer></script>
+</body>
+</html>

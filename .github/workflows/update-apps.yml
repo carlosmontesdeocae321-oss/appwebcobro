@@ -1,0 +1,45 @@
+name: Update apps.json via dispatch
+
+on:
+  repository_dispatch:
+    types: [update-apps-json]
+
+permissions:
+  contents: write
+
+jobs:
+  update_apps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Write apps.json from payload
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const payload = context.payload.client_payload || {};
+            if (payload.base64) {
+              fs.writeFileSync('data/apps.json', Buffer.from(payload.base64, 'base64'));
+            } else if (payload.content) {
+              if (typeof payload.content === 'string') {
+                fs.writeFileSync('data/apps.json', payload.content);
+              } else {
+                fs.writeFileSync('data/apps.json', JSON.stringify(payload.content, null, 2));
+              }
+            } else {
+              core.setFailed('No content provided in client_payload');
+            }
+
+      - name: Commit & push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/apps.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update apps.json via dashboard"
+            git push
+          fi

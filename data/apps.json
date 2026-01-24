@@ -1,13 +1,18 @@
 {
-  "apps": [
-    {
-      "id": "urgentitourdesa",
-      "name": "URGENTITO URDESA",
-      "whatsapp": "https://wa.me/593962542536",
-      "enabled": false,
-      "message": "Servicio temporal activado (prueba). Contacta por WhatsApp para más info.",
-      "startDate": "2026-01-21",
-      "expirationDate": "2026-02-23"
-    }
-  ]
+      "apps": [
+            {
+                  "id": "urgentitourdesa",
+                  "name": "URGENTITO URDESA",
+                  "whatsapp": "https://wa.me/593962542536",
+                  "enabled": false,
+                  "message": "Servicio temporal activado (prueba). Contacta por WhatsApp para más info.",
+                  "startDate": "2026-01-21",
+                  "expirationDate": "2026-02-23",
+                  "price": {
+                        "amount": 10,
+                        "currency": "USD",
+                        "interval": "monthly"
+                  }
+            }
+      ]
 }

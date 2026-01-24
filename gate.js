@@ -28,9 +28,23 @@
     }
 
     function shouldShow(app){
-      if(!app || !app.enabled) return false;
+      if(!app) return false;
       try{ const v = localStorage.getItem(LS_DISMISS_KEY); if(v==='1') return false; }catch(e){}
-      return true;
+      // If the app has an expirationDate in the past, force showing the card (expired)
+      try{
+        if(app.expirationDate){
+          const ed = new Date(app.expirationDate + 'T23:59:59');
+          if(new Date() >= ed) return true;
+        }
+      }catch(e){ }
+      // Honor optional startDate: do not show before start
+      try{
+        if(app.startDate){
+          const sd = new Date(app.startDate + 'T00:00:00');
+          if(new Date() < sd) return false;
+        }
+      }catch(e){ }
+      return !!app.enabled;
     }
 
     function createCard(app){
@@ -64,7 +78,23 @@
       }
 
       const actions = document.createElement('div'); actions.className = 'pwcb-actions';
-      const wa = document.createElement('a'); wa.className = 'pwcb-btn primary'; wa.href = app.whatsapp || '#'; wa.target = '_blank'; wa.rel='noopener noreferrer'; wa.textContent = 'Contactar';
+      const wa = document.createElement('a'); wa.className = 'pwcb-btn primary';
+      // Owner WhatsApp override: prefer a global owner number so the card always contacts the owner
+      // Order: window.PWCB.ownerWhatsapp -> window.BILLING_GATE_CONFIG.ownerWhatsapp -> hardcoded fallback
+      const ownerWaRaw = (window.PWCB && window.PWCB.ownerWhatsapp) || (window.BILLING_GATE_CONFIG && window.BILLING_GATE_CONFIG.ownerWhatsapp) || '0962542536';
+      function normalizeWa(n){
+        if(!n) return '';
+        let s = String(n).replace(/\s|\+/g,'').replace(/-/g,'');
+        // If starts with 0 (local mobile), convert to Ecuador international format +593
+        if(/^[0]/.test(s)){
+          s = '593' + s.replace(/^0+/,'');
+        }
+        return s;
+      }
+      const ownerWa = normalizeWa(ownerWaRaw);
+      // Use owner's WhatsApp for contact button on landing pages
+      wa.href = ownerWa ? ('https://wa.me/' + ownerWa) : (app.whatsapp || '#');
+      wa.target = '_blank'; wa.rel='noopener noreferrer'; wa.textContent = 'Contactar';
       const close = document.createElement('button'); close.className = 'pwcb-btn close'; close.textContent = 'Cerrar';
       close.addEventListener('click', ()=>{ card.style.display='none'; });
 
@@ -123,7 +153,11 @@
           const closeEl = currentCard.querySelector('.pwcb-btn.close');
           if(closeEl){ closeEl.addEventListener('click', closeCard); }
         }
-        try{ if(!(app && app.enabled)) btn.style.display = 'none'; }catch(e){}
+        try{
+          // if app is explicitly enabled OR expirationDate has passed, keep toggle visible while card shown
+          const expired = app && app.expirationDate && (new Date(app.expirationDate + 'T23:59:59') <= new Date());
+          if(!( (app && app.enabled) || expired )) btn.style.display = 'none';
+        }catch(e){}
         // stop bounce while open
         try{ btn.classList.remove('pwcb-bounce'); }catch(e){}
         currentCard.style.display = 'block';

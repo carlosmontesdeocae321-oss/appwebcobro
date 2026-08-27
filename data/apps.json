@@ -6,8 +6,8 @@
       "whatsapp": "https://wa.me/593962542536",
       "enabled": false,
       "message": "Servicio temporal activado (prueba). Contacta por WhatsApp para más info.",
-      "startDate": "2026-07-24",
-      "expirationDate": "2026-08-24",
+      "startDate": "2026-08-24",
+      "expirationDate": "2026-09-24",
       "price": {
         "amount": 10,
         "currency": "USD",
